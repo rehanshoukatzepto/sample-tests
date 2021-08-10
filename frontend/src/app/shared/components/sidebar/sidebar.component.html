@@ -1,0 +1,5 @@
+ 
+<mat-nav-list>
+    <h2 matSubheader>Pages</h2>
+    <a mat-list-item routerLinkActive="list-item-active" [routerLink]="link.url" *ngFor="let link of links"> {{ link.label }} </a>
+ </mat-nav-list>

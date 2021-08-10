@@ -1,0 +1,42 @@
+<form class="example-form" [formGroup]="form">
+  <!-- Form get your name -->
+  <div *ngIf="showData">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Enter Name</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="uname"
+        [errorStateMatcher]="matcher"
+        placeholder="John .."
+      />
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="start()">
+      Start Test
+    </button>
+  </div>
+  <!-- Questions Form and timer -->
+  <div *ngIf="!showData">
+    <h2>{{ duration }}</h2>
+    <div *ngFor="let q of questions">
+      <h2 id="example-radio-group-label">{{ q.title }}</h2>
+      <p>{{ q.description }}</p>
+      <mat-radio-group
+        aria-labelledby="example-radio-group-label"
+        class="example-radio-group"
+        [formControlName]="q._id"
+      >
+        <mat-radio-button
+          class="example-radio-button"
+          *ngFor="let opt of q.options"
+          [value]="opt"
+        >
+          {{ opt }}
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <button mat-raised-button color="primary" (click)="submit()">
+      Add Test
+    </button>
+  </div>
+</form>
